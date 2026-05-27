@@ -49,3 +49,6 @@ module "rds" {
   database_subnets          = module.vpc.database_subnets
   environment               = var.environment
 }
+module "cloudwatch" {
+  source = "../../modules/cloudwatch"
+}
