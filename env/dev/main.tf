@@ -34,6 +34,7 @@ module "ecs" {
   alb_target_group          = module.alb.alb_target_group
   app_security_group        = module.security-groups.app_security_group
   private_subnets           = module.vpc.private_subnets
+  alb_listener              = module.alb.alb_listener
 }
 module "waf" {
   source   = "../../modules/waf"

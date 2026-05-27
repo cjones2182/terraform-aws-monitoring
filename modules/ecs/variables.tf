@@ -18,3 +18,7 @@ variable "private_subnets" {
   description = "private subnets"
   type = list(string)
 }
+variable "alb_listener" {
+  description = "alb listener"
+  type = string
+}

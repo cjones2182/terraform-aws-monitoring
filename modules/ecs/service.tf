@@ -4,6 +4,8 @@ resource "aws_ecs_service" "app_ecs_service" {
   task_definition = aws_ecs_task_definition.app_task_definition.arn
   desired_count   = 3
 
+  depends_on = [ var.alb_listener ]
+
    load_balancer {
     target_group_arn = var.alb_target_group
     container_name   = "cory-container"

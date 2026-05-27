@@ -10,3 +10,7 @@ output "alb_arn_suffix" {
   description = "arn suffix for cloud metrics"
   value = aws_lb.main_alb.arn_suffix
 }
+output "alb_listener" {
+  description = "alb listener"
+  value = aws_lb_listener.main_arn
+}
