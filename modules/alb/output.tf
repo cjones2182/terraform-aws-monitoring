@@ -12,5 +12,5 @@ output "alb_arn_suffix" {
 }
 output "alb_listener" {
   description = "alb listener"
-  value = aws_lb_listener.main_arn
+  value = aws_lb_listener.main_arn.arn
 }
