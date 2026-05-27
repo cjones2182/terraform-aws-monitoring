@@ -6,7 +6,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_cpu_utilization" {
   threshold = 70
   period = 300
   evaluation_periods = 2
-  comparison_operator = GreaterThanOrEqualToThreshold
+  comparison_operator = "GreaterThanOrEqualToThreshold"
 
   dimensions = {
     DBInstanceIdentifier = var.main_rds
@@ -21,7 +21,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_free_storage" {
   threshold = 2 * 1024 * 1024 * 1024
   period = 300
   evaluation_periods = 2
-  comparison_operator = LessThanOrEqualToThreshold
+  comparison_operator = "LessThanOrEqualToThreshold"
 
   dimensions = {
     DBInstanceIdentifier = var.main_rds
