@@ -52,4 +52,5 @@ module "rds" {
 module "cloudwatch-metrics" {
   source = "../../modules/cloudwatch-metrics"
   alb_arn_suffix = module.alb.alb_arn_suffix
+  main_rds = module.rds.main_rds
 }
