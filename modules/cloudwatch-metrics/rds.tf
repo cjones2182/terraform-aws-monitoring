@@ -12,3 +12,18 @@ resource "aws_cloudwatch_metric_alarm" "rds_cpu_utilization" {
     DBInstanceIdentifier = var.main_rds
   }
 }
+
+resource "aws_cloudwatch_metric_alarm" "rds_free_storage" {
+  alarm_name = "rds-free_storage"
+  namespace = "AWS/RDS"
+  metric_name = "FreeStorageSpace"
+  statistic = "Average"
+  threshold = 2 * 1024 * 1024 * 1024
+  period = 300
+  evaluation_periods = 2
+  comparison_operator = LessThanOrEqualToThreshold
+
+  dimensions = {
+    DBInstanceIdentifier = var.main_rds
+  }
+}
