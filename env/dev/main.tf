@@ -50,7 +50,9 @@ module "rds" {
   environment               = var.environment
 }
 module "cloudwatch-metrics" {
-  source = "../../modules/cloudwatch-metrics"
-  alb_arn_suffix = module.alb.alb_arn_suffix
-  main_rds = module.rds.main_rds
+  source           = "../../modules/cloudwatch-metrics"
+  alb_arn_suffix   = module.alb.alb_arn_suffix
+  main_rds         = module.rds.main_rds
+  app_task_cluster = module.ecs.app_task_cluster
+  app_ecs_service  = module.ecs.app_ecs_service
 }
