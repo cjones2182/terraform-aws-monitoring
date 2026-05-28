@@ -14,6 +14,7 @@ Terraform | AWS | ECS Fargate | RDS MySQL | ALB | WAFv2 | S3 | Secrets Manager
 - modules/s3 - Encrypted logging bucket
 - modules/secrets - RDS credential storage
 - modules/waf - AWS managed rule sets
+- 
 
 ## Deployment
 terraform init && terraform apply

@@ -57,3 +57,7 @@ module "cloudwatch-metrics" {
   app_task_cluster = module.ecs.app_task_cluster
   app_ecs_service  = module.ecs.app_ecs_service
 }
+module "sns" {
+  source = "../../modules/sns"
+  
+}
