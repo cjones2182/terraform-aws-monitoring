@@ -59,5 +59,5 @@ module "cloudwatch-metrics" {
 }
 module "sns" {
   source = "../../modules/sns"
-  
+
 }
