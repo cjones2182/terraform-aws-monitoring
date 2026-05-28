@@ -7,6 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "ecs_cpu_utilization" {
   evaluation_periods = 2
   threshold = 70
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  alarm_actions = [ var.cloudwatch_sns_topic ]
 
   dimensions = {
     ClusterName = var.app_task_cluster

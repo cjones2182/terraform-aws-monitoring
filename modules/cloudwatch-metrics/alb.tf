@@ -7,6 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "alb_metric_alarm" {
     evaluation_periods = 2
     threshold = 5
     comparison_operator = "GreaterThanOrEqualToThreshold"
+    alarm_actions = [ var.cloudwatch_sns_topic ]
    
 
     dimensions = {

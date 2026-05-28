@@ -7,6 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_cpu_utilization" {
   period = 300
   evaluation_periods = 2
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  alarm_actions = [ var.cloudwatch_sns_topic ]
 
   dimensions = {
     DBInstanceIdentifier = var.main_rds

@@ -14,3 +14,7 @@ variable "app_ecs_service" {
   description = "ecs service"
   type = string
 }
+variable "cloudwatch_sns_topic" {
+  description = "cloudwatch sns topic"
+  type = string
+}
