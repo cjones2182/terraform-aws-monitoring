@@ -1,20 +1,25 @@
-# Terraform AWS Infrastructure
+# terraform-aws-monitoring-cloudwatch
 
-Deployed a complete AWS environment using Terraform modules. Architecture includes VPC with public/private/database subnets across multiple AZs, ECS Fargate cluster running 3 container instances, RDS MySQL with Multi-AZ, ALB with WAF protection and S3 access logging, Secrets Manager for credentials. Security groups follow least-privilege pattern. All infrastructure is version controlled and repeatable.
+Monitoring layer on top of the ECS/RDS/ALB stack. CloudWatch alarms for CPU, 
+memory, database connections, and ALB error rates. SNS handles alert routing.
 
-## Stack
-Terraform | AWS | ECS Fargate | RDS MySQL | ALB | WAFv2 | S3 | Secrets Manager
+## What's monitored
 
-## Folder Structure
-- modules/vpc - Network with NAT gateways and VPC endpoints
-- modules/security-groups - Tier-specific firewall rules
-- modules/alb - Load balancer with access logging
-- modules/ecs - Task definitions and service configuration
-- modules/rds - MySQL database in private subnets
-- modules/s3 - Encrypted logging bucket
-- modules/secrets - RDS credential storage
-- modules/waf - AWS managed rule sets
-- modules/sns - sns for metric alarms 
+- ECS task CPU and memory
+- RDS connection count and latency
+- ALB 5xx rate and target response time
 
-## Deployment
-terraform init && terraform apply
+Alarms are scoped per tier so you know where to look when something fires.
+
+## Modules
+
+- `cloud-metrics` — CloudWatch alarms across all tiers
+- `sns` — topics and subscriptions for alert delivery
+
+## Usage
+
+```bash
+terraform init
+terraform plan -var-file="env/dev/terraform.tfvars"
+terraform apply -var-file="env/dev/terraform.tfvars"
+```
